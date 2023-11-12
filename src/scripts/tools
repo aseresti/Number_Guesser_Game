@@ -1,0 +1,33 @@
+def validate_input_number():
+    while True:
+        user_number = input("enter a number between 1 and 100")
+        if not user_number.isdigit():
+            print(f"your input, {user_number} is not valid")
+            continue
+        else:
+            user_number = float(user_number)
+            if user_number > 100 or user_number < 1:
+                print(f"your input, {user_number} is out of range")
+                continue
+            else:
+                break
+    
+    return int(user_number)
+
+def compare_guess(random_number):
+    score = 100
+    while score > 0:
+        valid_num = validate_input_number()
+        if valid_num>random_number:
+            print("Hint: The number should be smaller")
+            score -= 10 
+        elif valid_num<random_number:
+            print("Hint: The number should be larger")
+            score -= 10
+        else:
+            print("Congratulations! You Won!")
+            print(f"Your Score is: {score}")
+            break
+    else:
+        print('GAME OVER!')
+        print('Your out of score')
